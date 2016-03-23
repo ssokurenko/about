@@ -1,42 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" ng-app="githubCard">
     <head>
         <title>Github Card</title>
-        <script src="js/config.js"></script>
-        <script src="js/app.js"></script>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/font-awesome.min.css">
     </head>
-    <body>
-        <div id="main">
-            <h1 id="gh-name">Sergey Sokurenko</h1>
-            <div><span id="gh-company">Wayne Enterprises</span>,&nbsp;<span id="gh-location">Earth</span></div>
-            <p>
-                <img id="gh-avatar" src="https://avatars.githubusercontent.com/u/1279563?v=3">
-            </p>
-            <a href="">
-                <i class="fa fa-github fa-2x">&nbsp;ssokurenko</i>
+    <body ng-controller="CardController as card">
+        <div id="main" ng-show="card.success">
+            <h1>{{ ::card.name }}</h1>
+            <div><span ng-show="card.company">{{ ::card.company }}</span><span ng-show="card.location"><span ng-show="card.company && card.location">,&nbsp;</span>{{ ::card.location }}</span></div>
+            <a ng-show="card.login" href="{{ ::card.html_url }}">
+                <p>
+                    <img ng-show="card.avatar_url" id="avatar" ng-src="{{ ::card.avatar_url }}">
+                </p>
             </a>
-            <p>
-                Since 2011
+            <a ng-show="card.login" href="{{ ::card.html_url }}">
+                <i class="fa fa-github fa-2x">&nbsp;{{ ::card.login }}</i>
+            </a>
+            <p ng-show="card.created_at">
+                Since {{ ::card.created_at | date:"y" }}
             </p>
             <div class="line"></div>
-            <p>
-                Public repositories: <span id="gh-public_repos">29</span>
+            <p ng-show="card.public_repos">
+                Public repositories: {{ ::card.public_repos }}
             </p>
             <p>
-                Following:&nbsp;<span id="following">13</span>&nbsp;&nbsp;&nbsp;&nbsp;Followers:&nbsp;<span id="followers">7</span>
+                <span ng-show="card.following">Following:&nbsp;{{ ::card.following}}</span><span ng-show="card.followers"><span ng-show="card.following && card.followers">,&nbsp;</span><span>Followers:&nbsp;{{ ::card.followers }}</span>
             </p>
             <div class="line"></div>
-            <p id="gh-hireable">
-                <i class="fa fa-battery-full fa-lg">&nbsp;Hirable!</i>
+            <p ng-show="card.hireable">
+                <i class="fa fa-battery-full fa-lg">&nbsp;Hireable!</i>
             </p>
-            <a href="" class="contact">
-                <i class="fa fa-globe fa-lg">&nbsp;sokurenko.com</i>
+            <a ng-show="card.blog" href="//{{ ::card.blog }}" class="contact">
+                <i class="fa fa-globe fa-lg">&nbsp;{{ ::card.blog }}</i>
             </a>
-            <a href="" class="contact">
-                <i class="fa fa-envelope fa-lg">&nbsp;s.sokurenko@gmail.com</i>
+            <a ng-show="card.email" href="mailto:{{ ::card.email }}?subject=Hi,%20{{ ::card.name }}" class="contact">
+                <i class="fa fa-envelope fa-lg">&nbsp;{{ ::card.email }}</i>
             </a>
         </div>
+        <!-- Sweet Angular -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+        <script src="js/config.js"></script>
+        <script src="js/app.js"></script>
     </body>
 </html>
