@@ -6,28 +6,28 @@
         <link rel="stylesheet" href="css/font-awesome.min.css">
     </head>
     <body ng-controller="CardController as card">
-        <div id="main" ng-show="card.success">
+        <div id="main" ng-show="card.success" ng-cloak>
             <h1>{{ ::card.name }}</h1>
-            <div><span ng-show="card.company">{{ ::card.company }}</span><span ng-show="card.location"><span ng-show="card.company && card.location">,&nbsp;</span>{{ ::card.location }}</span></div>
+            <div><span ng-show="card.company">{{ ::card.company }}</span><span ng-show="card.location"><span ng-show="card.company && card.location">,&nbsp;</span><span>{{ ::card.location }}</span></div>
             <a ng-show="card.login" href="{{ ::card.html_url }}">
                 <p>
                     <img ng-show="card.avatar_url" id="avatar" ng-src="{{ ::card.avatar_url }}">
                 </p>
             </a>
-            <a ng-show="card.login" href="{{ ::card.html_url }}">
+            <a href="{{ ::card.html_url }}">
                 <i class="fa fa-github fa-2x">&nbsp;{{ ::card.login }}</i>
             </a>
             <p ng-show="card.created_at">
                 Since {{ ::card.created_at | date:"y" }}
             </p>
-            <div class="line"></div>
+            <div class="line" ng-show="card.login"></div>
             <p ng-show="card.public_repos">
                 Public repositories: {{ ::card.public_repos }}
             </p>
             <p>
                 <span ng-show="card.following">Following:&nbsp;{{ ::card.following}}</span><span ng-show="card.followers"><span ng-show="card.following && card.followers">,&nbsp;</span><span>Followers:&nbsp;{{ ::card.followers }}</span>
             </p>
-            <div class="line"></div>
+            <div class="line" ng-show="card.login"></div>
             <p ng-show="card.hireable">
                 <i class="fa fa-battery-full fa-lg">&nbsp;Hireable!</i>
             </p>

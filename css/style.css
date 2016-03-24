@@ -16,7 +16,7 @@ a:hover {
 }
 
 #main {
-    margin: 2em auto;
+    margin: 1em auto;
     padding: 10px;
     max-width: 600px;
     background: #fff;
@@ -61,4 +61,8 @@ a.contact {
 
 i.fa-battery-full{
     color: #2faf2b;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
 }
