@@ -15,7 +15,9 @@ a:hover {
     color: #444;
 }
 
-#main {
+#main,
+#spinner,
+#error {
     margin: 1em auto;
     padding: 10px;
     max-width: 600px;
@@ -59,7 +61,11 @@ a.contact {
     margin: 1em;
 }
 
-i.fa-battery-full{
+.-red{
+    color: #f44249;
+}
+
+.-green{
     color: #2faf2b;
 }
 

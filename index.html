@@ -6,7 +6,18 @@
         <link rel="stylesheet" href="css/font-awesome.min.css">
     </head>
     <body ng-controller="CardController as card">
+        <div ng-hide="card.success || card.error" id="spinner">
+            <i class="fa fa-cog fa-spin fa-3x"></i>
+        </div>
+
+        <div ng-show="card.error" ng-cloak id="error">
+            <i class="fa fa-hand-spock-o fa-2x -red"></i>
+            <p>Undable to display the card</p>
+            <p>Please check if the Github account is properly set up at <strong>js/config.js</strong></p>
+        </div>
+
         <div id="main" ng-show="card.success" ng-cloak>
+
             <h1>{{ ::card.name }}</h1>
             <div><span ng-show="card.company">{{ ::card.company }}</span><span ng-show="card.location"><span ng-show="card.company && card.location">,&nbsp;</span><span>{{ ::card.location }}</span></div>
             <a ng-show="card.login" href="{{ ::card.html_url }}">
@@ -29,7 +40,7 @@
             </p>
             <div class="line" ng-show="card.login"></div>
             <p ng-show="card.hireable">
-                <i class="fa fa-battery-full fa-lg">&nbsp;Hireable!</i>
+                <i class="fa fa-battery-full fa-lg -green">&nbsp;Hireable!</i>
             </p>
             <a ng-show="card.blog" href="//{{ ::card.blog }}" class="contact">
                 <i class="fa fa-globe fa-lg">&nbsp;{{ ::card.blog }}</i>
