@@ -42,7 +42,7 @@
             <p ng-show="card.hireable">
                 <i class="fa fa-battery-full fa-lg -green">&nbsp;Hireable!</i>
             </p>
-            <a ng-show="card.blog" href="//{{ ::card.blog }}" class="contact">
+            <a ng-show="card.blog" href="{{ ::card.blog }}" class="contact">
                 <i class="fa fa-globe fa-lg">&nbsp;{{ ::card.blog }}</i>
             </a>
             <a ng-show="card.email" href="mailto:{{ ::card.email }}?subject=Hi,%20{{ ::card.name }}" class="contact">
