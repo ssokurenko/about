@@ -8,7 +8,7 @@ var app = angular.module('githubCard', [])
                 $scope.card.success = true;
 
                 // Fixing blog URL if the protocol value is not mentioned
-                if ($scope.card.blog.indexOf('http://') < 0) {
+                if ($scope.card.blog.indexOf('http') < 0) {
                     $scope.card.blog = 'http://' + $scope.card.blog;
                 }
             }, function errorCallback() {
